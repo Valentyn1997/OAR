@@ -1,0 +1,25 @@
+# @package _global_
+dataset:
+  _target_: src.data.Synthetic
+  name: synthetic
+  collection: False
+  train_test_splitted: True
+  oracle_available: True
+  n_shuffle_splits:            # not applicable
+  n_samples_train: 500
+  n_samples_test: 1000
+  extra_hid_multiplier: 2
+  cov_shift: 2.0
+  C0:
+    - 3
+    - -2
+    - 0.5
+  C1:
+    - 3
+    - -2
+    - 0.5
+
+  dim_cov: 1
+
+exp:
+  save_results: True

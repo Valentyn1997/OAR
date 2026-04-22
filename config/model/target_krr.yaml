@@ -1,0 +1,6 @@
+# @package _global_
+target_net:
+  _target_: src.models.TargetKernelRidgeRegression
+
+  length_scale: 5.0
+  adaptivity_coeff: 0.9

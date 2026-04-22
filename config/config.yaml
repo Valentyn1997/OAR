@@ -1,0 +1,123 @@
+# Dataset for training / evaluation -- specific values should be filled for each dataset
+dataset:
+  name: ???
+  collection: False                 # True for acic_2016 and acic_2018
+  train_test_splitted: False
+  oracle_available: False
+  test_size: 0.15                    # train/test split ratio
+  n_shuffle_splits: 1
+  dataset_ix:                       # dataset index
+  dim_cov: ???
+  extra_hid_multiplier:
+
+prop_net_cov:
+  _target_: src.models.PropNet
+
+  # Tunable hparams (some with default values)
+  dim_hid1_multiplier:
+  hid_layers: 1
+  lr:
+  batch_size:
+  wd:
+
+  tune_hparams: False
+  tune_type: choice
+  tune_range: 50
+  num_epochs: 200
+  hparams_grid:
+    lr:
+      - 0.001
+      - 0.005
+      - 0.01
+    batch_size:
+      - 32
+      - 64
+      - 128
+    wd:
+      - 0.0
+      - 0.001
+      - 0.01
+      - 0.1
+    dim_hid1_multiplier:
+      - 1.0
+      - 1.5
+      - 2.0
+
+mu_net_cov:
+  _target_: src.models.MuNet
+  mu_net_type: tnet
+  fit_mu: True
+
+  # Tunable hparams (some with default values)
+  dim_repr_multiplier:
+  dim_hid1_multiplier:
+  dim_hid2_multiplier:
+  hid_layers: 1
+  lr:
+  batch_size:
+  wd:
+
+  tune_hparams: False
+  tune_type: choice
+  tune_range: 50
+  num_epochs: 200
+  hparams_grid:
+    lr:
+      - 0.001
+      - 0.005
+      - 0.01
+    batch_size:
+      - 32
+      - 64
+      - 128
+    wd:
+      - 0.0
+      - 0.001
+      - 0.01
+      - 0.1
+    dim_hid1_multiplier:
+      - 1.0
+      - 1.5
+      - 2.0
+    dim_repr_multiplier:
+      - 1.0
+      - 1.5
+      - 2.0
+    dim_hid2_multiplier:
+      - 1.0
+      - 1.5
+      - 2.0
+
+
+
+
+target_net:
+  q_trunc: 0.05
+
+  regularization:
+    adaptive: true
+    coeff: mult                      # mult | log
+    type: dropout                # none | dropout | wd | noise
+    base_value: 0.5
+    efficient: false
+    adaptivity_coeff: 1.0
+
+
+exp:
+  seed: 10
+  device: cpu
+  logging: True
+  plotting: False
+  save_results: False
+  mlflow_uri: http://127.0.0.1:5002  # MlFlow server is located on 138.246.237.244
+  targets:
+    - cate
+    - rcate
+    - ivwcate
+
+
+# Hydra defaults
+defaults:
+  - _self_
+  - override hydra/hydra_logging: colorlog
+  - override hydra/job_logging: colorlog

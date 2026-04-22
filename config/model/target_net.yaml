@@ -1,0 +1,18 @@
+# @package _global_
+target_net:
+  _target_: src.models.TargetNet
+
+  lr: 0.005
+  batch_size: 64
+  hid_layers: 1
+  num_epochs: 200
+  tune_hparams: False             # Done jointly with the repr_net
+  gamma: 0.995                  # EMA of model weights for target
+  alpha: 0.1
+
+  dim_repr_multiplier:
+  dim_hid1_multiplier:
+  dim_hid2_multiplier:
+
+  regularization:
+    bias_corr_threshold: 1.0
