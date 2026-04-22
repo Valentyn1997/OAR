@@ -1,5 +1,8 @@
-# Ovrlap-Adaptive Regularization
-Tackling the issue of low overlap in meta-learners with an adaptive regularization.
+# Overlap-Adaptive Regularization
+Tackling the issue of low overlap in meta-learners with adaptive regularization.
+
+[![Conference](https://img.shields.io/badge/ICLR2026-Paper-blue])](https://openreview.net/forum?id=HMMSnGgYOy)
+[![arXiv](https://img.shields.io/badge/arXiv-2306.01424-b31b1b.svg)](https://arxiv.org/abs/2509.24962)
 
 <img width="1680" alt="image" src="https://github.com/user-attachments/assets/67fe5f83-2559-4b47-935c-7f593f3a2993" />
 
